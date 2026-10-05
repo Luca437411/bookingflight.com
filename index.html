@@ -179,3 +179,241 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flight Login</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #0ea5e9, #2563eb);
+    }
+
+    .container {
+      width: 90%;
+      max-width: 420px;
+      background: white;
+      padding: 35px 30px;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
+
+    .logo {
+      width: 75px;
+      height: 75px;
+      margin: 0 auto 20px;
+      background: #2563eb;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 38px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #222;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #777;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 7px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus, select:focus {
+      border-color: #2563eb;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 25px;
+      border: none;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    .back {
+      background: #e5e7eb;
+      color: #333;
+      margin-top: 10px;
+    }
+
+    .back:hover {
+      background: #d1d5db;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .success {
+      text-align: center;
+      color: #16a34a;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- LOGIN SCREEN -->
+  <div class="container" id="loginScreen">
+
+    <div class="logo">✈</div>
+
+    <h1>Welcome Back</h1>
+    <p class="subtitle">Sign in to continue</p>
+
+    <form onsubmit="showFlightDetails(event)">
+
+      <label for="surname">Surname</label>
+      <input
+        type="text"
+        id="surname"
+        placeholder="Enter your surname"
+        required
+      >
+
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        placeholder="Enter your password"
+        required
+      >
+
+      <button type="submit">Continue</button>
+
+    </form>
+
+  </div>
+
+
+  <!-- FLIGHT DETAILS SCREEN -->
+  <div class="container hidden" id="flightScreen">
+
+    <div class="logo">✈</div>
+
+    <h1>Flight Details</h1>
+    <p class="subtitle">Enter your flight information</p>
+
+    <form onsubmit="submitFlight(event)">
+
+      <label for="flightNumber">Flight Number</label>
+      <input
+        type="text"
+        id="flightNumber"
+        placeholder="e.g. BA123"
+        required
+      >
+
+      <label for="departure">Departure Airport</label>
+      <input
+        type="text"
+        id="departure"
+        placeholder="e.g. London Heathrow"
+        required
+      >
+
+      <label for="destination">Destination</label>
+      <input
+        type="text"
+        id="destination"
+        placeholder="e.g. New York"
+        required
+      >
+
+      <label for="date">Flight Date</label>
+      <input
+        type="date"
+        id="date"
+        required
+      >
+
+      <label for="seat">Seat Number</label>
+      <input
+        type="text"
+        id="seat"
+        placeholder="e.g. 12A"
+      >
+
+      <button type="submit">Continue</button>
+
+      <button
+        type="button"
+        class="back"
+        onclick="goBack()">
+        Back
+      </button>
+
+      <p class="success" id="success"></p>
+
+    </form>
+
+  </div>
+
+
+  <script>
+    function showFlightDetails(event) {
+      event.preventDefault();
+
+      document.getElementById("loginScreen").classList.add("hidden");
+      document.getElementById("flightScreen").classList.remove("hidden");
+    }
+
+    function goBack() {
+      document.getElementById("flightScreen").classList.add("hidden");
+      document.getElementById("loginScreen").classList.remove("hidden");
+    }
+
+    function submitFlight(event) {
+      event.preventDefault();
+
+      document.getElementById("success").textContent =
+        "Flight details saved successfully!";
+    }
+  </script>
+
+</body>
+</html>
