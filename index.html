@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    }
+
+    .login-box {
+      width: 90%;
+      max-width: 400px;
+      background: white;
+      padding: 40px 30px;
+      border-radius: 18px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 20px;
+      background: #4f46e5;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 8px;
+      color: #222;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #777;
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #333;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #4f46e5;
+    }
+
+    .forgot {
+      display: block;
+      text-align: right;
+      margin-top: -8px;
+      margin-bottom: 20px;
+      color: #4f46e5;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .forgot:hover {
+      text-decoration: underline;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: #4f46e5;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #4338ca;
+    }
+
+    .message {
+      text-align: center;
+      margin-top: 15px;
+      color: #555;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-box">
+
+    <!-- Logo -->
+    <div class="logo">L</div>
+
+    <h1>Welcome Back</h1>
+    <p class="subtitle">Please sign in to continue</p>
+
+    <form onsubmit="login(event)">
+
+      <!-- Surname -->
+      <label for="surname">Surname</label>
+      <input
+        type="text"
+        id="surname"
+        placeholder="Enter your surname"
+        required
+      >
+
+      <!-- Password -->
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        placeholder="Enter your password"
+        required
+      >
+
+      <!-- Forgot password -->
+      <a href="#" class="forgot" onclick="forgotPassword()">
+        Forgot password?
+      </a>
+
+      <!-- Continue -->
+      <button type="submit">Continue</button>
+
+      <p class="message" id="message"></p>
+
+    </form>
+  </div>
+
+  <script>
+    function login(event) {
+      event.preventDefault();
+
+      const surname = document.getElementById("surname").value;
+      const password = document.getElementById("password").value;
+      const message = document.getElementById("message");
+
+      if (surname && password) {
+        message.textContent = "Login details entered successfully.";
+        message.style.color = "green";
+      }
+    }
+
+    function forgotPassword() {
+      alert("Password reset page coming soon.");
+    }
+  </script>
+
+</body>
+</html>
